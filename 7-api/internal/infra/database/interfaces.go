@@ -4,7 +4,7 @@ import "github.com/mateus-sousa/goexpert/7-api/internal/entity"
 
 type UserInterface interface {
 	Create(user *entity.User) error
-	FindByEmail(email string) (entity.User, error)
+	FindByEmail(email string) (*entity.User, error)
 }
 
 type ProductInterface interface {
