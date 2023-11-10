@@ -5,14 +5,33 @@ import (
 	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/jwtauth"
 	"github.com/mateus-sousa/goexpert/7-api/configs"
+	_ "github.com/mateus-sousa/goexpert/7-api/docs"
 	"github.com/mateus-sousa/goexpert/7-api/internal/entity"
 	"github.com/mateus-sousa/goexpert/7-api/internal/infra/database"
 	"github.com/mateus-sousa/goexpert/7-api/internal/infra/webserver/handlers"
+	httpSwagger "github.com/swaggo/http-swagger"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"net/http"
 )
 
+// @title           Go Expert Example
+// @version         1.0
+// @description     Product API with authentication.
+// @termsOfService  http://swagger.io/terms/
+
+// @contact.name   Mateus Silva
+// @contact.url    http://www.swagger.io/support
+// @contact.email  support@swagger.io
+
+// @license.name  Panda License
+// @license.url   http://www.apache.org/licenses/LICENSE-2.0.html
+
+// @host      localhost:8000
+// @BasePath  /
+// @securityDefinitions.apikey ApiKeyAuth
+// @in header
+// @name Authorization
 func main() {
 	cfg, err := configs.LoadConfig(".")
 	if err != nil {
@@ -44,5 +63,6 @@ func main() {
 	})
 	r.Post("/users", userHandler.Create)
 	r.Post("/users/generate_token", userHandler.GetJWT)
+	r.Get("/docs/*", httpSwagger.Handler(httpSwagger.URL("http://localhost:8000/docs/doc.json")))
 	http.ListenAndServe(":8000", r)
 }
