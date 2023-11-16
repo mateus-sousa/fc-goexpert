@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/mateus-sousa/goexpert/9-manipulando-eventos/pkg/rabbitmq"
+	"github.com/mateus-sousa/fc-goexpert/9-manipulando-eventos/pkg/rabbitmq"
 	amqp "github.com/rabbitmq/amqp091-go"
 )
 

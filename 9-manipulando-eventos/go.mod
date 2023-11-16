@@ -1,4 +1,4 @@
-module github.com/mateus-sousa/goexpert/9-manipulando-eventos
+module github.com/mateus-sousa/fc-goexpert/9-manipulando-eventos
 
 go 1.21.3
 
